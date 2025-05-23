@@ -10,6 +10,8 @@ services:
       - DB_USER=root
       - DB_PASSWORD=password
       - DB_NAME=testdb
+      - LANG=ko_KR.UTF-8
+      - LC_ALL=ko_KR.UTF-8
     depends_on:
       - db
     volumes:
@@ -20,6 +22,11 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=testdb
+      - LANG=ko_KR.UTF-8
+      - LC_ALL=ko_KR.UTF-8
+      - LC_CTYPE=ko_KR.UTF-8
+      - LC_COLLATE=ko_KR.UTF-8
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --init-connect='SET NAMES utf8mb4'
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
       - mysql_data:/var/lib/mysql
@@ -27,4 +34,4 @@ services:
       - "3306:3306"
 
 volumes:
-  mysql_data: 
+  mysql_data:
