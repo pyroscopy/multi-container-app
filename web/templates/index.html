@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>멀티 컨테이너 앱</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>메시지 목록</h1>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {{ message[1] }}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>메시지가 없습니다.</p>
+        {% endif %}
+    </div>
+</body>
+</html> 
